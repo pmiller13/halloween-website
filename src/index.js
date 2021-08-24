@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {your_name} from './const.js';
 import {Button, TextField} from '@material-ui/core';
+import { InputAdornment } from '@material-ui/core';
+
 
 
 class TextInput extends React.Component {
   render() {
     return (
-      <TextField id="outlined-basic"  variant="outlined" className="text-input center" />
+      <TextField style = {{width: 350}} id="outlined-basic" placeholder="many universes in many bubbles"  variant="outlined" className="text-input parent" />
     );
   }
 }
@@ -16,7 +18,7 @@ class TextInput extends React.Component {
 class SubmitInput extends React.Component {
   render() {
     return (
-<Button variant="contained" onClick={() => { console.log('clicked') }}>Default</Button>
+<Button className="parent" variant="contained" onClick={() => { console.log('clicked') }}>Submit</Button>
     );
   }
 }
@@ -24,16 +26,19 @@ class SubmitInput extends React.Component {
 class HomePage extends React.Component {
   render() {
     const msg = your_name();
+    const msg2 = your_name();
     return (
-      <div>
-      <div className="center">
-        <h1>Welcome, 💀 {msg}</h1>
-      </div>
-      <div className="center">
+      <div className="parentparent">
+      <div className="parent">
+        <div className="parentparent">
+        <h1 className="parent">Welcome, 💀 {msg}</h1>
+        </div>
+        <div className="parentparent">
         <TextInput />
-      </div>
-      <div className="center-button">
+        </div>
+        <div className="parentparent">
         <SubmitInput />
+        </div>
       </div>
       </div>
     );

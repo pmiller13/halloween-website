@@ -18,6 +18,12 @@ html, body{
   display: table;
   height: 100%;
   margin: 0 auto;
+  padding: 5px;
+}
+
+h1{
+  text-align: center;
+  padding: 10px;
 }
 
 .parent{
@@ -25,9 +31,8 @@ html, body{
   vertical-align: middle;
 }
 
-.center-button{
+.vCenterItems {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
