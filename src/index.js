@@ -1,17 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {your_name} from './const.js';
+import {Button, TextField} from '@material-ui/core';
+
+
+class TextInput extends React.Component {
+  render() {
+    return (
+      <TextField id="outlined-basic"  variant="outlined" className="text-input center" />
+    );
+  }
+}
+
+class SubmitInput extends React.Component {
+  render() {
+    return (
+<Button variant="contained" onClick={() => { console.log('clicked') }}>Default</Button>
+    );
+  }
+}
+
+class HomePage extends React.Component {
+  render() {
+    const msg = your_name();
+    return (
+      <div>
+      <div className="center">
+        <h1>Welcome, 💀 {msg}</h1>
+      </div>
+      <div className="center">
+        <TextInput />
+      </div>
+      <div className="center-button">
+        <SubmitInput />
+      </div>
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <HomePage />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
