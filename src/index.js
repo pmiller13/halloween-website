@@ -11,12 +11,13 @@ class FormSubmission extends React.Component {
     this.state = {
          welcome: your_name(),
          inputtext: "",
-         data: 'many universes in many bubbles'
+         placeholdertext: "many universes in many bubbles",
       }
     this.handleEvent = this.handleEvent.bind(this);
     this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
   }
   handleTextFieldChange(i){
+    this.setState({inputtext: i});
     console.log(i);
   }
   handleEvent(){
@@ -30,7 +31,7 @@ class FormSubmission extends React.Component {
           <h1 className="parent">Welcome, 💀 {this.state.welcome}</h1>
         </div>
         <div className="parentparent">
-          <TextField style = {{width: 350}} id="outlined-basic" onChange={swag => this.handleTextFieldChange(swag.target.value)} defaultValue={this.state.inputtext} placeholder={this.state.data} variant="outlined" className="text-input parent" />
+          <TextField style = {{width: 350}} id="outlined-basic" value={this.state.inputtext} onChange={swag => this.handleTextFieldChange(swag.target.value)} placeholder={this.state.placeholdertext} variant="outlined" className="text-input parent" />
         </div>
         <div className="parentparent">
           <Button className="parent" variant="contained" onClick={() => this.handleEvent()}>Submit</Button>
