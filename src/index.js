@@ -1,61 +1,46 @@
 import React from 'react';
-import {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {your_name} from './const.js';
-import axios from 'axios';
-import {Button, TextField} from '@material-ui/core';
-
-
-function FormSubmission() {
-    const [input_text, textfieldChange] = useState("");
-    const placeholdertext = "many universes in many bubbles";
-    function handleSubmit() {
-        if (input_text === "") {
-            return 1;
-        }
-        const payload = JSON.stringify(
-            {
-                'text': input_text
-            }
-        );
-        axios.post('http://0.0.0.0:8080/upload', payload,
-            {
-                headers:{'Access-Control-Allow-Origin' : '0.0.0.0:8080'},
-                auth:{username: 'yolo', password: '123swagswag321'}
-            })
-            .then(function (response) {
-                textfieldChange('');
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            }
-        );
-        return 0;
-    }
-    return (
-        <div>
-            <div className="parentparent">
-              <TextField style = {{width: 350}} id="outlined-basic" value={input_text} onChange={event => textfieldChange(event.target.value)} placeholder={placeholdertext} variant="outlined" className="text-input parent" />
-            </div>
-            <div className="parentparent">
-              <Button className="parent" variant="contained" onClick={handleSubmit}>Submit</Button>
-            </div>
-        </div>
-    );
-}
-
+import StandardImageList from './imagelist.js';
+import CameraStuff from './camera_stuff.js';
+import { your_name } from './const.js';
+import Gallery from "./gallery.js";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 function FuncForm() {
-    const welcome = your_name();
-    return (
-      <div>
-        <div className="parentparent">
-          <h1 className="parent">Welcome, 💀 {welcome}</h1>
-        </div>
-        <FormSubmission />
-      </div>
-    );
+
+  const welcome = your_name();
+  return (
+    <Router>
+      <Switch>
+      <Route path="/gallery">
+          <div>
+            <div className="parentparent">
+              <Gallery />
+            </div>
+          </div>
+        </Route>
+        <Route path="/">
+          <div>
+            <div className="parentparent">
+              <h1 className="parent">Welcome, 💀 {welcome}</h1>
+            </div>
+            <div className="parentparent">
+              <CameraStuff />
+            </div>
+            <div className="parentparent">
+              <StandardImageList />
+            </div>
+          </div>
+        </Route>
+
+      </Switch>
+    </Router>
+  );
 }
 
 ReactDOM.render(

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Generating Art",
+  "name": "Create art with image and text",
   "icons": [
     {
       "src": "favicon.ico",
